@@ -31,6 +31,7 @@ Le formulaire valide les champs et prépare un lien WhatsApp. Le visiteur ouvre 
 - `src/app/page.tsx` : contenu et sections de la vitrine.
 - `src/app/globals.css` : thème Tailwind, styles responsive et cadres téléphone.
 - `src/components/app-previews.tsx` : aperçus de l’application.
+- `src/components/screen-carousel.tsx` : carrousel automatique des écrans, navigation et pause.
 - `src/components/product-sections.tsx` : finances, bracelets, équipe, WhatsApp, tarifs à venir et FAQ.
 - `src/components/navigation.tsx` : navigation mobile.
 - `src/components/contact-form.tsx` : formulaire de demande de démo.
@@ -46,5 +47,7 @@ Les tarifs du service ne sont pas encore définis : la section Tarifs affiche «
 `public/images/portraits-africains.png` est un visuel généré avec l’outil ImageGen intégré. Il réunit quatre portraits de personnes adultes fictives d’Afrique de l’Ouest, cadrées en grille 2 × 2 sur fond sombre pour les avatars. Le prompt demandait deux hommes et deux femmes sénégalais, tête et épaules, éclairage studio naturel, sans texte ni logo. Ces visages ne représentent pas des clients.
 
 Les animations de halo, d’apparition et de survol restent discrètes et sont désactivées lorsque le visiteur active la préférence de réduction des mouvements.
+
+Le carrousel met en avant un écran toutes les cinq secondes. Il se met en pause au survol, à l’entrée du focus, hors de la zone visible et quand l’onglet est masqué. Une sélection manuelle arrête la lecture automatique ; le bouton Lecture permet de la reprendre explicitement, y compris au clavier sans déplacer le focus. Le passage du focus à un autre contrôle met à nouveau la rotation en pause. En mode de réduction des mouvements, seule la navigation manuelle est proposée.
 
 Références de configuration : [Next.js](https://nextjs.org/docs/app/getting-started/installation), [Tailwind CSS](https://tailwindcss.com/docs/installation/using-postcss).

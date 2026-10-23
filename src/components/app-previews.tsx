@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowUpRight, Bell, Check, CircleCheck, Home, Plus, ScanLine, Search, Settings, Share2, Ticket, Users, Wallet } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Bell, Check, CircleCheck, FlashlightOff, Home, Keyboard, Pencil, Plus, ScanLine, Search, Settings, Share2, Ticket, Users, Vibrate, Volume2, Wallet, X } from "lucide-react";
 
 export type Screen = "dashboard" | "scan" | "registration" | "card" | "payment" | "members" | "scanner" | "finances" | "entries";
 
@@ -15,11 +15,32 @@ function Field({ label, value = "—" }: { label: string; value?: string }) {
 }
 
 function Dashboard() {
-  return <><div className="app-content"><div className="flex items-center gap-2.5"><Portrait /><div className="flex-1 min-w-0"><strong>Bienvenue à l’accueil</strong><small>Votre salle</small></div><Bell size={18} /></div><h4>Vue d’ensemble</h4><div className="grid grid-cols-2 gap-2"><div className="mini-panel"><Users size={17} className="text-lime" /><small>Adhérents actifs</small><b className="stat-value">—</b><small>Actuellement</small></div><div className="mini-panel"><Ticket size={17} className="text-blue-400" /><small>Ventes de bracelets</small><b className="stat-value">—</b><small>Sur la période</small></div></div><div className="mini-panel"><small>Argent reçu · période sélectionnée</small><b className="revenue">— <span>FCFA</span></b><div className="flex gap-4 border-t border-white/5 pt-2"><small>Adhérents</small><small>Bracelets</small></div></div><div className="quick-actions">{[{ Icon: Plus, label: "Adhérent" }, { Icon: Wallet, label: "Paiement" }, { Icon: Users, label: "Personnel" }].map(({ Icon, label }) => <span key={label}><Icon size={15} />{label}</span>)}</div><div className="flex justify-between items-center"><h4>Dernières opérations</h4><span className="text-lime text-[9px]">Tout voir</span></div><div className="preview-empty"><Wallet size={24} /><p>Les règlements enregistrés<br />apparaissent ici.</p></div></div><AppNav /></>;
+  return <>
+    <div className="app-content dashboard-preview">
+      <div className="dashboard-header"><Portrait /><div><strong>Bienvenue à l’accueil</strong><small>Votre salle</small></div><Bell size={15} /></div>
+      <h4 className="dashboard-heading">Vue d’ensemble</h4>
+      <div className="dashboard-stats">
+        <div className="dashboard-stat"><div><span className="dashboard-stat-icon"><Users size={13} /></span><b>—</b></div><strong>Adhérents actifs</strong><small>Actuellement</small></div>
+        <div className="dashboard-stat"><div><span className="dashboard-stat-icon blue"><Ticket size={13} /></span><b>—</b></div><strong>Entrées à la séance</strong><small>Via bracelet · ce mois</small></div>
+      </div>
+      <div className="dashboard-revenue"><span className="dashboard-stat-icon green"><Wallet size={13} /></span><div><b>— <span>FCFA</span></b><small>Encaissé au total</small><small>Période sélectionnée · bracelets inclus</small></div></div>
+      <div className="quick-actions dashboard-actions">{[{ Icon: Plus, label: "Adhérent" }, { Icon: Plus, label: "Paiement" }, { Icon: Users, label: "Personnel" }].map(({ Icon, label }) => <span key={label}><Icon size={12} />{label}</span>)}</div>
+      <div className="dashboard-operations"><h4>Dernières opérations</h4><span>Tout voir</span></div>
+      <p className="dashboard-empty">Les règlements enregistrés apparaissent ici après vos premières opérations.</p>
+    </div>
+    <AppNav />
+  </>;
 }
 
 function ScanResult() {
-  return <div className="app-content scan-result"><div className="app-title"><ArrowLeft size={17} />Résultat du scan</div><div className="member-portrait"><Portrait variant={2} large /></div><div className="text-center"><h3>Photo du porteur</h3><small>À comparer avec la personne présente</small></div><div className="mini-panel"><Field label="Nom de l’adhérent" /><Field label="Numéro de carte" /><Field label="Formule" /><Field label="Statut" /><Field label="Séances restantes" /></div><div className="preview-empty compact"><CircleCheck size={20} /><p>Le résultat dépend de la carte scannée.</p></div><div className="app-outline mt-auto">Voir la fiche adhérent <ArrowUpRight size={14} /></div><div className="app-button"><ScanLine size={15} />Scanner le suivant</div></div>;
+  return <div className="app-content scan-result scan-preview">
+    <div className="scan-preview-header"><X size={15} /><span>Résultat du scan</span><Pencil size={14} /></div>
+    <small className="scan-preview-label">Vérification du porteur</small>
+    <div className="scan-preview-banner"><ScanLine size={21} /><div><b>Statut de la carte</b><small>Affiché après la lecture du QR</small></div></div>
+    <div className="scan-preview-identity"><Portrait variant={2} large /><h3>Photo du porteur</h3><span>Formule de l’adhérent</span></div>
+    <div className="scan-preview-info"><Field label="Carte" /><Field label="Téléphone" /><Field label="Séances" /></div>
+    <div className="scan-preview-actions"><div className="app-outline"><ScanLine size={14} />Scanner le suivant</div><div className="scan-profile-link">Ouvrir la fiche complète</div></div>
+  </div>;
 }
 
 function Registration() {
@@ -39,7 +60,15 @@ function Members() {
 }
 
 function Scanner() {
-  return <div className="app-content scanner-screen"><div className="app-title"><ArrowLeft size={17} />Scanner une carte</div><div className="scanner-center"><div className="scan-target"><span /><span /><span /><span /><div className="scan-beam" /></div><p>Placez le QR dans le cadre</p><small>Carte membre ou bracelet de la salle</small></div><div className="app-outline"><Search size={14} />Rechercher un adhérent</div><small className="text-center">Le résultat s’affiche après la lecture.</small></div>;
+  return <div className="camera-preview">
+    <div className="camera-controls"><span><X size={15} /></span><span><FlashlightOff size={15} /></span></div>
+    <div className="scan-target camera-reticle"><span /><span /><span /><span /><div className="scan-beam" /></div>
+    <div className="camera-footer">
+      <p>Placez le QR de la carte ou du bracelet dans le cadre</p>
+      <div className="camera-manual-entry"><Keyboard size={13} /><span>Saisir un numéro de carte</span></div>
+      <div className="camera-options"><span><Volume2 size={12} />Son</span><span><Vibrate size={12} />Vibration</span></div>
+    </div>
+  </div>;
 }
 
 function Finances() {
@@ -54,5 +83,5 @@ const screens = { dashboard: Dashboard, scan: ScanResult, registration: Registra
 
 export function Phone({ screen, className = "", label }: { screen: Screen; className?: string; label?: string }) {
   const Content = screens[screen];
-  return <div className={`phone ${className}`} role="img" aria-label={label || `Interface GymPass SN : ${screen}`}><div className="phone-screen" aria-hidden="true"><div className="phone-status"><span>9:41</span><div className="phone-island" /><span className="flex gap-1 items-center"><span className="signal">▂▄▆</span><span>▰</span></span></div><Content /><div className="home-indicator" /></div></div>;
+  return <div className={`phone ${className}`} role="img" aria-label={label || `Interface GymPass SN : ${screen}`}><div className={`phone-screen${screen === "scanner" ? " phone-screen-camera" : ""}`} aria-hidden="true"><div className="phone-status"><span>9:41</span><div className="phone-island" /><span className="flex gap-1 items-center"><span className="signal">▂▄▆</span><span>▰</span></span></div><Content /><div className="home-indicator" /></div></div>;
 }
