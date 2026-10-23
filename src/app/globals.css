@@ -432,7 +432,7 @@ h2 { font-size: clamp(31px, 3.3vw, 44px); line-height: 1.15; letter-spacing: -.0
 .scanner-halo { pointer-events: none; }
 .scanner-visual > .phone { z-index: 1; }
 .scanner-tag { position: relative; bottom: auto; max-width: 100%; z-index: 1; text-align: center; }
-/* La section ecrans s?etend bord a bord, sans retrait lateral. */
+/* La section écrans s’étend bord à bord, sans retrait latéral. */
 .screens-section { width: 100%; max-width: none; margin-inline: 0; padding-inline: 0; }
 /* Galerie automatique : aucune piste de defilement horizontal. */
 .screen-carousel { --slide-step: clamp(215px, 30vw, 310px); position: relative; min-width: 0; }

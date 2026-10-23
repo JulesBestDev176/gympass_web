@@ -67,23 +67,23 @@ export function PricingSection() {
 
 export function TrustSection() {
   const assurances = [
-    { Icon: LockKeyhole, title: "Des acc?s personnels et prot?g?s", description: "Chaque membre de votre ?quipe utilise son compte, avec les droits de son r?le. Vous pouvez changer votre mot de passe et utiliser le d?verrouillage biom?trique sur un t?l?phone compatible." },
-    { Icon: Settings, title: "Vous gardez la main", description: "Le propri?taire configure les tarifs de sa salle, ajoute ses r?ceptionnistes et peut activer ou d?sactiver leurs comptes. Vous g?rez votre organisation depuis l?application." },
-    { Icon: ShieldCheck, title: "Une carte perdue reste sous contr?le", description: "Remplacez la carte depuis la fiche de l?adh?rent : l?ancien QR est d?sactiv?. ? l?accueil, la photo et le statut de la carte permettent de v?rifier le porteur." },
-    { Icon: Headphones, title: "De l?aide dans votre quotidien", description: "Un probl?me d?acc?s, une question sur un ?cran ou une difficult? ? l?accueil ? Contactez-nous sur WhatsApp avec le d?tail de votre besoin pour ?tre accompagn?." },
-    { Icon: Users, title: "Un d?marrage accompagn?", description: "?changeons sur votre salle, ses tarifs et le fonctionnement de votre r?ception. Nous vous accompagnons dans la mise en place et la prise en main de GymPass SN." },
-    { Icon: MessageCircle, title: "Un contact direct, m?me apr?s le d?marrage", description: "Gardez le m?me contact WhatsApp pour vos questions et vos besoins d?assistance. ?crivez-nous lorsque vous en avez besoin ; les modalit?s de prise en charge se pr?cisent lors de l??change." },
+    { Icon: LockKeyhole, title: "Des accès personnels et protégés", description: "Chaque membre de votre équipe utilise son compte, avec les droits de son rôle. Vous pouvez changer votre mot de passe et utiliser le déverrouillage biométrique sur un téléphone compatible." },
+    { Icon: Settings, title: "Vous gardez la main", description: "Le propriétaire configure les tarifs de sa salle, ajoute ses réceptionnistes et peut activer ou désactiver leurs comptes. Vous gérez votre organisation depuis l’application." },
+    { Icon: ShieldCheck, title: "Une carte perdue reste sous contrôle", description: "Remplacez la carte depuis la fiche de l’adhérent : l’ancien QR est désactivé. À l’accueil, la photo et le statut de la carte permettent de vérifier le porteur." },
+    { Icon: Headphones, title: "De l’aide dans votre quotidien", description: "Un problème d’accès, une question sur un écran ou une difficulté à l’accueil ? Contactez-nous sur WhatsApp avec le détail de votre besoin pour être accompagné." },
+    { Icon: Users, title: "Un démarrage accompagné", description: "Échangeons sur votre salle, ses tarifs et le fonctionnement de votre réception. Nous vous accompagnons dans la mise en place et la prise en main de GymPass SN." },
+    { Icon: MessageCircle, title: "Un contact direct, même après le démarrage", description: "Gardez le même contact WhatsApp pour vos questions et vos besoins d’assistance. Écrivez-nous lorsque vous en avez besoin ; les modalités de prise en charge se précisent lors de l’échange." },
   ];
   return <section id="confiance" className="section container trust-section">
     <div className="section-heading">
-      <div><p className="eyebrow">S?curit?, assistance et disponibilit?</p><h2>Vous gardez la main.<br />Nous vous accompagnons.</h2></div>
-      <p className="section-intro">Des acc?s adapt?s ? chaque r?le, des r?glages ? votre port?e et un interlocuteur pour vous aider ? utiliser GymPass SN au quotidien.</p>
+      <div><p className="eyebrow">Sécurité, assistance et disponibilité</p><h2>Vous gardez la main.<br />Nous vous accompagnons.</h2></div>
+      <p className="section-intro">Des accès adaptés à chaque rôle, des réglages à votre portée et un interlocuteur pour vous aider à utiliser GymPass SN au quotidien.</p>
     </div>
     <div className="trust-grid">{assurances.map(({ Icon, title, description }) => <article key={title}><span className="feature-icon"><Icon size={23} /></span><h3>{title}</h3><p>{description}</p></article>)}</div>
     <div className="support-panel">
       <span className="feature-icon"><Headphones size={26} /></span>
-      <div><h3>Parlons directement de votre besoin.</h3><p>Avant de vous ?quiper ou pendant l?utilisation de l?application, retrouvez-nous sur WhatsApp au {whatsappDisplay}. Indiquez le nom de votre salle et votre question pour faciliter l??change.</p></div>
-      <a className="button button-secondary" href={whatsappLink("Bonjour, j?ai besoin d?assistance pour GymPass SN.")} target="_blank" rel="noopener noreferrer">Contacter l?assistance <ArrowUpRight size={17} /></a>
+      <div><h3>Parlons directement de votre besoin.</h3><p>Avant de vous équiper ou pendant l’utilisation de l’application, retrouvez-nous sur WhatsApp au {whatsappDisplay}. Indiquez le nom de votre salle et votre question pour faciliter l’échange.</p></div>
+      <a className="button button-secondary" href={whatsappLink("Bonjour, j’ai besoin d’assistance pour GymPass SN.")} target="_blank" rel="noopener noreferrer">Contacter l’assistance <ArrowUpRight size={17} /></a>
     </div>
   </section>;
 }
