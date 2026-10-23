@@ -67,12 +67,25 @@ export function PricingSection() {
 
 export function TrustSection() {
   const assurances = [
-    { Icon: Settings, title: "Vos tarifs, vos réglages", description: "Le propriétaire configure les frais d’inscription, la mensualité et les séances depuis les paramètres de sa salle." },
-    { Icon: Users, title: "La main sur votre équipe", description: "Ajoutez vos réceptionnistes, activez ou désactivez leurs comptes et réinitialisez leur mot de passe si nécessaire." },
-    { Icon: LockKeyhole, title: "Des accès personnels", description: "Chaque personne utilise son compte. Le changement de mot de passe et le déverrouillage biométrique, sur téléphone compatible, sont disponibles." },
-    { Icon: ShieldCheck, title: "Des cartes remplaçables", description: "En cas de perte, remplacez la carte depuis la fiche adhérent. L’ancien QR est désactivé pour éviter qu’il reste utilisable." },
+    { Icon: LockKeyhole, title: "Des acc?s personnels et prot?g?s", description: "Chaque membre de votre ?quipe utilise son compte, avec les droits de son r?le. Vous pouvez changer votre mot de passe et utiliser le d?verrouillage biom?trique sur un t?l?phone compatible." },
+    { Icon: Settings, title: "Vous gardez la main", description: "Le propri?taire configure les tarifs de sa salle, ajoute ses r?ceptionnistes et peut activer ou d?sactiver leurs comptes. Vous g?rez votre organisation depuis l?application." },
+    { Icon: ShieldCheck, title: "Une carte perdue reste sous contr?le", description: "Remplacez la carte depuis la fiche de l?adh?rent : l?ancien QR est d?sactiv?. ? l?accueil, la photo et le statut de la carte permettent de v?rifier le porteur." },
+    { Icon: Headphones, title: "De l?aide dans votre quotidien", description: "Un probl?me d?acc?s, une question sur un ?cran ou une difficult? ? l?accueil ? Contactez-nous sur WhatsApp avec le d?tail de votre besoin pour ?tre accompagn?." },
+    { Icon: Users, title: "Un d?marrage accompagn?", description: "?changeons sur votre salle, ses tarifs et le fonctionnement de votre r?ception. Nous vous accompagnons dans la mise en place et la prise en main de GymPass SN." },
+    { Icon: MessageCircle, title: "Un contact direct, m?me apr?s le d?marrage", description: "Gardez le m?me contact WhatsApp pour vos questions et vos besoins d?assistance. ?crivez-nous lorsque vous en avez besoin ; les modalit?s de prise en charge se pr?cisent lors de l??change." },
   ];
-  return <section id="confiance" className="section container trust-section"><div className="section-heading"><div><p className="eyebrow">Vous gardez les commandes</p><h2>Votre salle.<br />Vos accès. Votre équipe.</h2></div><p className="section-intro">Des réglages accessibles au propriétaire et des comptes individuels pour organiser le travail de l’accueil.</p></div><div className="trust-grid">{assurances.map(({ Icon, title, description }) => <article key={title}><span className="feature-icon"><Icon size={23} /></span><h3>{title}</h3><p>{description}</p></article>)}</div><div className="support-panel"><span className="feature-icon"><Headphones size={26} /></span><div><h3>Un contact pour vous accompagner.</h3><p>Une question sur la configuration, un accès ou l’utilisation à l’accueil ? Expliquez-nous votre besoin sur WhatsApp.</p></div><a className="button button-secondary" href={whatsappLink("Bonjour, j’ai besoin d’assistance pour GymPass SN.")} target="_blank" rel="noopener noreferrer">Contacter l’assistance <ArrowUpRight size={17} /></a></div></section>;
+  return <section id="confiance" className="section container trust-section">
+    <div className="section-heading">
+      <div><p className="eyebrow">S?curit?, assistance et disponibilit?</p><h2>Vous gardez la main.<br />Nous vous accompagnons.</h2></div>
+      <p className="section-intro">Des acc?s adapt?s ? chaque r?le, des r?glages ? votre port?e et un interlocuteur pour vous aider ? utiliser GymPass SN au quotidien.</p>
+    </div>
+    <div className="trust-grid">{assurances.map(({ Icon, title, description }) => <article key={title}><span className="feature-icon"><Icon size={23} /></span><h3>{title}</h3><p>{description}</p></article>)}</div>
+    <div className="support-panel">
+      <span className="feature-icon"><Headphones size={26} /></span>
+      <div><h3>Parlons directement de votre besoin.</h3><p>Avant de vous ?quiper ou pendant l?utilisation de l?application, retrouvez-nous sur WhatsApp au {whatsappDisplay}. Indiquez le nom de votre salle et votre question pour faciliter l??change.</p></div>
+      <a className="button button-secondary" href={whatsappLink("Bonjour, j?ai besoin d?assistance pour GymPass SN.")} target="_blank" rel="noopener noreferrer">Contacter l?assistance <ArrowUpRight size={17} /></a>
+    </div>
+  </section>;
 }
 
 const questions = [

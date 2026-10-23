@@ -328,7 +328,7 @@ h2 { font-size: clamp(31px, 3.3vw, 44px); line-height: 1.15; letter-spacing: -.0
 .chart-empty > span { border-bottom: 1px dashed #ffffff0b; }
 .chart-empty > small { position: absolute; inset: 0; display: grid; place-items: center; }
 .bracelet-strip { font-size: 16px; letter-spacing: 0; }
-.trust-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.trust-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .trust-grid article { padding: 23px; background: #151a20; border: 1px solid #ffffff09; border-radius: 13px; transition: transform .25s, border-color .25s; }
 .trust-grid h3 { margin-top: 20px; font-size: 17px; font-weight: 600; line-height: 1.4; }
 .trust-grid p { margin-top: 12px; font-size: 13px; color: #969ca9; line-height: 1.8; }
@@ -444,7 +444,7 @@ h2 { font-size: clamp(31px, 3.3vw, 44px); line-height: 1.15; letter-spacing: -.0
 .carousel-slide.is-neighbor { transform: translate(calc(-50% + var(--slide-offset) * var(--slide-step)), 14px) scale(.84); opacity: .46; visibility: visible; }
 .carousel-slide.is-current { transform: translate(-50%, -10px) scale(1.03); opacity: 1; visibility: visible; pointer-events: auto; }
 .carousel-slide figure { margin: 0; }
-.carousel-slide figcaption { display: flex; align-items: flex-start; gap: 12px; margin-top: 23px; opacity: 0; transition: opacity .4s ease; }
+.carousel-slide figcaption { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; margin-top: 23px; opacity: 0; transition: opacity .4s ease; }
 .carousel-slide.is-current figcaption { opacity: 1; }
 .carousel-slide figcaption > div { min-width: 0; }
 .carousel-slide h3 { font-size: 16px; line-height: 1.5; font-weight: 600; }
