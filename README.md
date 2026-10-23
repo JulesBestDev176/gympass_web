@@ -1,6 +1,6 @@
 # GymPass SN — site vitrine
 
-Projet Next.js App Router, TypeScript et Tailwind CSS. La structure vient de `../design/GymPass-SN-Site.dc.html`. Les aperçus de téléphone reprennent les écrans actuels de `../gympass_sn/lib` avec des données de démonstration : ils ne se connectent pas au backend.
+Projet Next.js App Router, TypeScript et Tailwind CSS. La structure vient de `../design/GymPass-SN-Site.dc.html`. Les aperçus de téléphone reprennent les écrans actuels de `../gympass_sn/lib` avec des champs neutres, sans noms, montants ni statistiques inventés. Ils ne se connectent pas au backend.
 
 ## Lancer
 
@@ -39,6 +39,12 @@ Le formulaire valide les champs et prépare un lien WhatsApp. Le visiteur ouvre 
 
 ## Contenu commercial
 
-Les tarifs du service ne sont pas encore définis : la section Tarifs affiche « À venir ». Les montants des aperçus sont des données fictives de démonstration, et non les prix du service. La FAQ fonctionne avec les éléments HTML natifs `details` et `summary`.
+Les tarifs du service ne sont pas encore définis : la section Tarifs affiche « À venir ». Le site décrit l’enregistrement de l’argent reçu en dehors de l’application, les ventes de bracelets et la vérification des cartes. Aucun transfert Wave ou Orange Money n’est effectué par GymPass SN. La FAQ fonctionne avec les éléments HTML natifs `details` et `summary`.
+
+## Visuels et animations
+
+`public/images/portraits-africains.png` est un visuel généré avec l’outil ImageGen intégré. Il réunit quatre portraits de personnes adultes fictives d’Afrique de l’Ouest, cadrées en grille 2 × 2 sur fond sombre pour les avatars. Le prompt demandait deux hommes et deux femmes sénégalais, tête et épaules, éclairage studio naturel, sans texte ni logo. Ces visages ne représentent pas des clients.
+
+Les animations de halo, d’apparition et de survol restent discrètes et sont désactivées lorsque le visiteur active la préférence de réduction des mouvements.
 
 Références de configuration : [Next.js](https://nextjs.org/docs/app/getting-started/installation), [Tailwind CSS](https://tailwindcss.com/docs/installation/using-postcss).

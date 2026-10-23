@@ -1,4 +1,4 @@
-import { ArrowUpRight, BadgeCheck, Check, ChevronDown, CircleCheck, Clock3, MessageCircle, ScanLine, ShieldCheck, Ticket, Users } from "lucide-react";
+import { ArrowUpRight, BadgeCheck, Check, ChevronDown, CircleCheck, Clock3, Headphones, LockKeyhole, MessageCircle, ScanLine, Settings, ShieldCheck, Ticket, Users } from "lucide-react";
 import { Phone } from "@/components/app-previews";
 import { whatsappLink, whatsappDisplay } from "@/lib/contact";
 
@@ -8,35 +8,34 @@ export function ManagementSections() {
       <div>
         <p className="eyebrow">Gardez une vue d’ensemble</p>
         <h2>Vos encaissements,<br />avec le détail qui compte.</h2>
-        <p className="body-copy mt-6">Retrouvez les paiements des adhérents et les ventes de bracelets dans la vue Finances. Choisissez une période pour comprendre ce qui a été encaissé.</p>
+        <p className="body-copy mt-6">Retrouvez les règlements déclarés pour les adhérents et les ventes de bracelets dans la vue Finances. Choisissez une période pour consulter les montants enregistrés par votre équipe.</p>
         <ul className="product-checklist">
           <li><Check />Distinguez les recettes adhérents et bracelets.</li>
           <li><Check />Suivez l’évolution des encaissements en FCFA.</li>
-          <li><Check />Filtrez par source, moyen de paiement et type.</li>
+          <li><Check />Filtrez par source, mode de règlement déclaré et type.</li>
           <li><Check />Recherchez un adhérent, une carte ou un bracelet.</li>
         </ul>
         <a href="#contact" className="product-link">Découvrir la vue propriétaire <ArrowUpRight size={17} /></a>
       </div>
-      <div className="product-phone-stage"><Phone screen="finances" label="Aperçu Finances : total encaissé, répartition adhérents et bracelets, évolution et transactions fictives" /><span className="product-demo-note">Données de démonstration</span></div>
+      <div className="product-phone-stage"><Phone screen="finances" label="Interface Finances : règlements enregistrés, répartition adhérents et ventes de bracelets" /></div>
     </section>
 
     <section id="bracelets" className="product-band">
       <div className="container product-split">
-        <div className="bracelet-demo" aria-label="Exemple fictif de vente de bracelet">
-          <div className="flex items-center justify-between gap-3"><span className="feature-icon"><Ticket size={24} /></span><span className="demo-chip">Exemple de passage</span></div>
-          <div className="bracelet-strip"><ScanLine size={33} /><span>GP-BR-0042</span><span className="bracelet-perforation" /></div>
-          <div className="bracelet-confirmation"><CircleCheck size={22} /><div><b>Vente de bracelet enregistrée</b><p>Une entrée à la séance, ajoutée au suivi.</p></div></div>
-          <div className="bracelet-demo-footer"><span><small>Bracelet</small><b>GP-BR-0042</b></span><span><small>Mode de paiement</small><b>Espèces</b></span></div>
-          <p className="text-xs text-muted mt-5">Illustration avec un numéro fictif.</p>
+        <div className="bracelet-demo" aria-label="Fonctionnement des ventes de bracelets">
+          <div className="flex items-center justify-between gap-3"><span className="feature-icon"><Ticket size={24} /></span><span className="demo-chip">Vente à la séance</span></div>
+          <div className="bracelet-strip"><ScanLine size={33} /><span>Bracelet de votre salle</span><span className="bracelet-perforation" /></div>
+          <div className="bracelet-confirmation"><CircleCheck size={22} /><div><b>Un scan pour enregistrer la vente</b><p>Le résultat indique la vente enregistrée ou le motif du refus.</p></div></div>
+          <div className="bracelet-demo-footer"><span><small>Identification</small><b>Numéro du bracelet</b></span><span><small>Suivi</small><b>Montant et réceptionniste</b></span></div>
         </div>
         <div>
           <p className="eyebrow">Les visiteurs aussi ont leur place</p>
-          <h2>Une séance ponctuelle.<br />Un passage suivi.</h2>
-          <p className="body-copy mt-6">Votre salle accueille aussi des visiteurs à la séance. Le scan d’un bracelet permet d’enregistrer la vente, puis de retrouver les entrées et les montants encaissés sur la période.</p>
+          <h2>Les ventes à la séance,<br />enregistrées au scan.</h2>
+          <p className="body-copy mt-6">Le scan d’un bracelet de votre salle enregistre une vente à la séance. Vous retrouvez ensuite les ventes, leurs montants et la personne qui les a enregistrées.</p>
           <ol className="compact-steps">
             <li><span>01</span><div><h3>Scannez le bracelet</h3><p>Le QR identifie le bracelet de votre salle.</p></div></li>
             <li><span>02</span><div><h3>Vérifiez le résultat</h3><p>L’application confirme la vente ou indique le motif du refus.</p></div></li>
-            <li><span>03</span><div><h3>Retrouvez l’opération</h3><p>Consultez l’historique des entrées et le total encaissé.</p></div></li>
+            <li><span>03</span><div><h3>Retrouvez la vente</h3><p>Consultez l’historique des ventes de bracelets sur la période.</p></div></li>
           </ol>
         </div>
       </div>
@@ -47,7 +46,7 @@ export function ManagementSections() {
 export function TeamSection() {
   const roles = [
     { Icon: ShieldCheck, role: "Propriétaire", subtitle: "Pilotez votre salle", items: ["Consulter les finances et les indicateurs", "Configurer les tarifs de la salle", "Ajouter et gérer les réceptionnistes", "Suivre les adhérents et les opérations"], accent: true },
-    { Icon: Users, role: "Réception", subtitle: "Faites avancer l’accueil", items: ["Inscrire et retrouver les adhérents", "Enregistrer les paiements", "Scanner les cartes et les bracelets", "Consulter les statuts et les échéances"], accent: false },
+    { Icon: Users, role: "Réception", subtitle: "Faites avancer l’accueil", items: ["Inscrire et retrouver les adhérents", "Enregistrer l’argent reçu", "Scanner les cartes et les bracelets", "Consulter les statuts et les échéances"], accent: false },
   ];
   return <section id="equipe" className="section container">
     <div className="section-heading"><div><p className="eyebrow">Une équipe, des rôles clairs</p><h2>Le bon accès,<br />pour chaque personne.</h2></div><p className="section-intro">Chaque membre de l’équipe utilise son compte. Les écrans et les actions disponibles dépendent de son rôle.</p></div>
@@ -57,8 +56,8 @@ export function TeamSection() {
 
 export function WhatsAppSection() {
   return <section id="whatsapp" className="container product-split whatsapp-section">
-    <div><p className="eyebrow">Restez en contact</p><h2>La carte de votre adhérent,<br />à portée de WhatsApp.</h2><p className="body-copy mt-6">Depuis sa fiche, retrouvez le numéro WhatsApp de l’adhérent et les options de partage de sa carte. Le suivi distingue une demande d’envoi acceptée d’une réception confirmée.</p><ul className="product-checklist"><li><Check />Partage de la carte membre et de son QR.</li><li><Check />État de la demande d’envoi visible dans l’application.</li><li><Check />Possibilité de partager la carte depuis le téléphone.</li></ul><a className="product-link" href={whatsappLink()} target="_blank" rel="noopener noreferrer">Voir le parcours en démonstration <ArrowUpRight size={17} /></a></div>
-    <div className="whatsapp-demo"><div className="flex items-center gap-3 border-b border-white/5 pb-5"><span className="feature-icon"><MessageCircle size={23} /></span><div><h3>Carte de Seynabou Gueye</h3><p className="text-xs text-muted mt-1">Exemple de suivi dans GymPass SN</p></div></div><div className="whatsapp-card-preview"><img src="/logo.png" alt="" width={34} height={34} /><div><b>Dakar Fit Club</b><span>Carte membre · GP-0231</span></div><ScanLine size={35} className="ml-auto text-lime" /></div><div className="delivery-status"><CircleCheck size={19} /><div><b>Demande d’envoi acceptée</b><p>La réception par l’adhérent n’est pas confirmée par le service.</p></div></div><div className="flex items-start gap-2 text-xs text-muted leading-relaxed mt-5"><Clock3 size={15} className="shrink-0 mt-0.5" /><p>Vérifiez l’état de la demande avant de réessayer un envoi.</p></div></div>
+    <div><p className="eyebrow">Restez en contact</p><h2>La carte de votre adhérent,<br />à portée de WhatsApp.</h2><p className="body-copy mt-6">Depuis sa fiche, retrouvez le numéro WhatsApp de l’adhérent et les options de partage de sa carte. L’application affiche l’état de la demande d’envoi ; une demande acceptée ne confirme pas la réception par l’adhérent.</p><ul className="product-checklist"><li><Check />Partage de la carte membre et de son QR.</li><li><Check />État de la demande d’envoi visible dans l’application.</li><li><Check />Possibilité de partager la carte depuis le téléphone.</li></ul><a className="product-link" href={whatsappLink()} target="_blank" rel="noopener noreferrer">Découvrir le parcours <ArrowUpRight size={17} /></a></div>
+    <div className="whatsapp-demo"><div className="flex items-center gap-3 border-b border-white/5 pb-5"><span className="feature-icon"><MessageCircle size={23} /></span><div><h3>Partage de carte membre</h3><p className="text-xs text-muted mt-1">Depuis la fiche de l’adhérent</p></div></div><div className="whatsapp-card-preview"><img src="/logo.png" alt="" width={34} height={34} /><div><b>Votre salle</b><span>La carte personnelle de votre adhérent</span></div><ScanLine size={35} className="ml-auto text-lime" /></div><div className="delivery-status"><CircleCheck size={19} /><div><b>Un suivi de la demande d’envoi</b><p>Consultez son état dans l’application avant de réessayer.</p></div></div><div className="flex items-start gap-2 text-xs text-muted leading-relaxed mt-5"><Clock3 size={15} className="shrink-0 mt-0.5" /><p>La réception du message n’est pas garantie par un statut « accepté ».</p></div></div>
   </section>;
 }
 
@@ -66,13 +65,26 @@ export function PricingSection() {
   return <section id="tarifs" className="section container"><div className="pricing-panel"><div><p className="eyebrow">Tarifs</p><h2>Les offres arrivent bientôt.</h2><p className="body-copy mt-4">Les tarifs GymPass SN seront publiés ici. En attendant, découvrez l’application et échangeons sur les besoins de votre salle.</p></div><div className="pricing-action"><span className="demo-chip">Tarifs à venir</span><a className="button button-primary" href="#contact">Demander une démo <ArrowUpRight size={17} /></a></div></div></section>;
 }
 
+export function TrustSection() {
+  const assurances = [
+    { Icon: Settings, title: "Vos tarifs, vos réglages", description: "Le propriétaire configure les frais d’inscription, la mensualité et les séances depuis les paramètres de sa salle." },
+    { Icon: Users, title: "La main sur votre équipe", description: "Ajoutez vos réceptionnistes, activez ou désactivez leurs comptes et réinitialisez leur mot de passe si nécessaire." },
+    { Icon: LockKeyhole, title: "Des accès personnels", description: "Chaque personne utilise son compte. Le changement de mot de passe et le déverrouillage biométrique, sur téléphone compatible, sont disponibles." },
+    { Icon: ShieldCheck, title: "Des cartes remplaçables", description: "En cas de perte, remplacez la carte depuis la fiche adhérent. L’ancien QR est désactivé pour éviter qu’il reste utilisable." },
+  ];
+  return <section id="confiance" className="section container trust-section"><div className="section-heading"><div><p className="eyebrow">Vous gardez les commandes</p><h2>Votre salle.<br />Vos accès. Votre équipe.</h2></div><p className="section-intro">Des réglages accessibles au propriétaire et des comptes individuels pour organiser le travail de l’accueil.</p></div><div className="trust-grid">{assurances.map(({ Icon, title, description }) => <article key={title}><span className="feature-icon"><Icon size={23} /></span><h3>{title}</h3><p>{description}</p></article>)}</div><div className="support-panel"><span className="feature-icon"><Headphones size={26} /></span><div><h3>Un contact pour vous accompagner.</h3><p>Une question sur la configuration, un accès ou l’utilisation à l’accueil ? Expliquez-nous votre besoin sur WhatsApp.</p></div><a className="button button-secondary" href={whatsappLink("Bonjour, j’ai besoin d’assistance pour GymPass SN.")} target="_blank" rel="noopener noreferrer">Contacter l’assistance <ArrowUpRight size={17} /></a></div></section>;
+}
+
 const questions = [
   { question: "À qui s’adresse GymPass SN ?", answer: "GymPass SN s’adresse aux salles de sport au Sénégal qui souhaitent gérer leurs adhérents, les cartes QR, les encaissements et les entrées depuis un téléphone. Le propriétaire et la réception disposent d’accès adaptés à leur rôle." },
   { question: "Quels types de formules peut-on gérer ?", answer: "L’application permet de gérer les mensualités, les cartes de séances et les entrées ponctuelles. Les cartes de séances affichent le solde restant après le passage. Les visiteurs à la séance peuvent être suivis via les bracelets." },
-  { question: "Peut-on enregistrer les paiements Wave et Orange Money ?", answer: "Oui. Les encaissements peuvent être enregistrés en espèces, par Wave ou par Orange Money, avec des montants en FCFA. L’enregistrement dans GymPass SN sert au suivi de votre salle ; le paiement lui-même s’effectue avec le moyen choisi." },
+  { question: "GymPass SN effectue-t-il les paiements Wave ou Orange Money ?", answer: "Non. Vous recevez l’argent en dehors de GymPass SN, puis vous indiquez dans l’application comment il a été reçu : espèces, Wave ou Orange Money. L’application enregistre le règlement pour le suivi de votre salle ; elle ne déclenche aucun transfert d’argent." },
   { question: "Que faire si un adhérent perd sa carte ?", answer: "Depuis sa fiche, vous pouvez remplacer sa carte. L’ancien QR est désactivé et une nouvelle carte est créée. La carte peut être partagée, exportée en PDF ou imprimée." },
   { question: "Peut-on ajouter plusieurs réceptionnistes ?", answer: "Oui. Le propriétaire peut ajouter et gérer les membres de son équipe. Chaque réceptionniste dispose de son propre compte pour les opérations d’accueil, avec les droits de son rôle." },
-  { question: "Les montants des aperçus sont-ils les tarifs GymPass SN ?", answer: "Non. Les noms, numéros, montants et indicateurs affichés dans les aperçus sont des données de démonstration de l’application. Les tarifs du service GymPass SN ne sont pas encore publiés." },
+  { question: "Que représente l’historique des bracelets ?", answer: "Il répertorie les ventes à la séance enregistrées au scan des bracelets de la salle, avec les informations renvoyées pour chaque vente. Il ne représente pas le nombre total de passages de tous les adhérents." },
+  { question: "Est-ce que je garde la main sur les paramètres de ma salle ?", answer: "Oui. Le propriétaire peut configurer les tarifs de sa salle et gérer ses réceptionnistes. Les accès de la réception sont adaptés à son rôle. Vous pouvez aussi changer votre mot de passe depuis les paramètres de votre compte." },
+  { question: "Comment obtenir de l’assistance ?", answer: `Vous pouvez nous contacter sur WhatsApp au ${whatsappDisplay} pour une question sur la mise en place ou l’utilisation de GymPass SN. Décrivez le problème rencontré et l’écran concerné pour faciliter l’échange.` },
+  { question: "Quels sont les tarifs de GymPass SN ?", answer: "Les tarifs du service seront publiés prochainement. Vous pouvez dès maintenant nous contacter pour découvrir l’application et parler des besoins de votre salle." },
   { question: "Comment demander une démonstration ?", answer: `Renseignez le nom de votre salle, votre ville et votre numéro dans le formulaire de contact. Le site prépare votre message WhatsApp : vous pouvez le vérifier avant de l’envoyer au ${whatsappDisplay}.` },
 ];
 

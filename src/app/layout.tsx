@@ -6,9 +6,9 @@ const urbanist = localFont({ src: "../../public/fonts/Urbanist.ttf", variable: "
 
 export const metadata: Metadata = {
   title: "GymPass SN — Votre salle, dans un téléphone",
-  description: "Gérez votre salle de sport au Sénégal : adhérents, cartes QR, contrôle d’accès et encaissements en FCFA. Découvrez GymPass SN.",
+  description: "GymPass SN : adhérents, cartes QR, vérification des abonnements et suivi de l’argent reçu par votre salle de sport au Sénégal.",
   icons: { icon: "/logo.png", apple: "/logo.png" },
-  openGraph: { title: "GymPass SN — La réception de votre salle, dans un téléphone.", description: "Inscrivez, encaissez et scannez. La gestion de salle pensée pour le Sénégal.", locale: "fr_SN", type: "website" },
+  openGraph: { title: "GymPass SN — La réception de votre salle, dans un téléphone.", description: "Inscrivez vos adhérents, enregistrez l’argent reçu et vérifiez les cartes. La gestion de salle pensée pour le Sénégal.", locale: "fr_SN", type: "website" },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
