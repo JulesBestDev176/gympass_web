@@ -12,6 +12,7 @@ function offsetFromCurrent(index: number, current: number, count: number) {
 
 export function ScreenCarousel({ slides }: { slides: Slide[] }) {
   const root = useRef<HTMLDivElement>(null);
+  const gesture = useRef<{ x: number; y: number; pointer: number } | null>(null);
   const [current, setCurrent] = useState(0);
   const [playing, setPlaying] = useState(true);
   const [hovered, setHovered] = useState(false);
@@ -66,7 +67,22 @@ export function ScreenCarousel({ slides }: { slides: Slide[] }) {
     }}
   >
     <div className="carousel-toolbar"><span>{String(current + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}</span>{motionAllowed && <button type="button" onClick={() => { setPlaying(value => !value); setFocusPaused(false); }} aria-label={playing ? "Mettre le carrousel en pause" : "Reprendre le défilement automatique"}>{playing ? <Pause size={14} /> : <Play size={14} />}{playing ? "Pause" : "Lecture"}</button>}</div>
-    <div id="screen-carousel-stage" className="carousel-stage" aria-live={playing && motionAllowed ? "off" : "polite"} aria-atomic="false">
+    <div id="screen-carousel-stage" className="carousel-stage" aria-live={advancing ? "off" : "polite"} aria-atomic="false"
+      onPointerDown={event => {
+        if (!event.isPrimary || event.pointerType === "mouse") return;
+        gesture.current = { x: event.clientX, y: event.clientY, pointer: event.pointerId };
+        event.currentTarget.setPointerCapture(event.pointerId);
+      }}
+      onPointerUp={event => {
+        const start = gesture.current;
+        gesture.current = null;
+        if (!start || start.pointer !== event.pointerId) return;
+        const dx = event.clientX - start.x, dy = event.clientY - start.y;
+        if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy) * 1.5) select(current + (dx < 0 ? 1 : -1));
+      }}
+      onPointerCancel={() => { gesture.current = null; }}
+      onLostPointerCapture={() => { gesture.current = null; }}
+    >
       {slides.map((slide, index) => {
         const offset = offsetFromCurrent(index, current, slides.length);
         const active = index === current;

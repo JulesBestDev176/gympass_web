@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
-const urbanist = localFont({ src: "../../public/fonts/Urbanist.ttf", variable: "--font-urbanist", display: "swap" });
+const urbanist = localFont({ src: "../../public/fonts/Urbanist.ttf", variable: "--font-urbanist", weight: "100 900", display: "swap" });
 
 export const metadata: Metadata = {
   title: "GymPass SN — Votre salle, dans un téléphone",

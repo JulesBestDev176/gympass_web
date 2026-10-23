@@ -1,13 +1,14 @@
-import { ArrowLeft, ArrowUpRight, Bell, Check, CircleCheck, FlashlightOff, Home, Keyboard, Pencil, Plus, ScanLine, Search, Settings, Share2, Ticket, Users, Vibrate, Volume2, Wallet, X } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Bell, Check, CircleCheck, FlashlightOff, Home, Keyboard, Pencil, Plus, ScanLine, Search, Share2, Ticket, Users, Vibrate, Volume2, Wallet, X } from "lucide-react";
+import Image from "next/image";
 
 export type Screen = "dashboard" | "scan" | "registration" | "card" | "payment" | "members" | "scanner" | "finances" | "entries";
 
 export function Portrait({ variant = 0, large = false }: { variant?: number; large?: boolean }) {
-  return <span className={`avatar portrait portrait-${variant % 4}${large ? " avatar-large" : ""}`} aria-hidden="true" />;
+  return <span className={`avatar portrait portrait-${variant % 4}${large ? " avatar-large" : ""}`} aria-hidden="true"><Image src="/images/portraits-africains.png" alt="" width={large ? 160 : 64} height={large ? 160 : 64} /></span>;
 }
 
 function AppNav({ active = "Accueil" }: { active?: string }) {
-  return <div className="app-nav">{[{ label: "Accueil", Icon: Home }, { label: "Adhérents", Icon: Users }, { label: "Scanner", Icon: ScanLine }, { label: "Paiements", Icon: Wallet }, { label: "Paramètres", Icon: Settings }].map(({ label, Icon }) => <span key={label} className={label === "Scanner" ? "scanner-nav-item" : label === active ? "selected" : ""}><Icon size={17} strokeWidth={1.6} /><span>{label}</span></span>)}</div>;
+  return <div className="app-nav">{[{ label: "Accueil", asset: "" }, { label: "Adhérents", asset: "nav-users-three" }, { label: "Scanner", asset: "nav-scan" }, { label: "Paiements", asset: "nav-receipt" }, { label: "Paramètres", asset: "nav-gear-six" }].map(({ label, asset }) => <span key={label} className={label === "Scanner" ? "scanner-nav-item" : label === active ? "selected" : ""}>{asset ? <span className="app-nav-icon" style={{ maskImage: `url(/icons/${asset}.svg)` }} /> : <Home size={17} strokeWidth={1.6} />}<span>{label}</span></span>)}</div>;
 }
 
 function Field({ label, value = "—" }: { label: string; value?: string }) {
@@ -21,7 +22,7 @@ function Dashboard() {
       <h4 className="dashboard-heading">Vue d’ensemble</h4>
       <div className="dashboard-stats">
         <div className="dashboard-stat"><div><span className="dashboard-stat-icon"><Users size={13} /></span><b>—</b></div><strong>Adhérents actifs</strong><small>Actuellement</small></div>
-        <div className="dashboard-stat"><div><span className="dashboard-stat-icon blue"><Ticket size={13} /></span><b>—</b></div><strong>Entrées à la séance</strong><small>Via bracelet · ce mois</small></div>
+        <div className="dashboard-stat"><div><span className="dashboard-stat-icon blue"><Ticket size={13} /></span><b>—</b></div><strong>Bracelets vendus</strong><small>Ce mois</small></div>
       </div>
       <div className="dashboard-revenue"><span className="dashboard-stat-icon green"><Wallet size={13} /></span><div><b>— <span>FCFA</span></b><small>Encaissé au total</small><small>Période sélectionnée · bracelets inclus</small></div></div>
       <div className="quick-actions dashboard-actions">{[{ Icon: Plus, label: "Adhérent" }, { Icon: Plus, label: "Paiement" }, { Icon: Users, label: "Personnel" }].map(({ Icon, label }) => <span key={label}><Icon size={12} />{label}</span>)}</div>
@@ -44,7 +45,7 @@ function ScanResult() {
 }
 
 function Registration() {
-  return <div className="app-content"><div className="app-title"><ArrowLeft size={17} />Nouvel adhérent</div><div className="flex gap-1 my-1">{[0, 1, 2, 3, 4].map(n => <span key={n} className={`h-1 flex-1 rounded ${n < 4 ? "bg-lime" : "bg-white/10"}`} />)}</div><h3>Formules et encaissement</h3><div className="mini-panel"><Field label="Frais d’inscription" value="— FCFA" /></div><div className="grid grid-cols-2 gap-2"><div className="app-outline">Mensuel</div><div className="app-outline active">Carte de séances</div></div><div className="mini-panel"><Field label="Nombre de séances" /><Field label="Montant" value="— FCFA" /></div><h4>Mode de règlement déclaré</h4><div className="payment-options"><span>Espèces</span><span>Wave</span><span>Orange M.</span></div><small>Indiquez comment l’argent a été reçu.</small><div className="app-button mt-auto">Voir le récapitulatif <ArrowUpRight size={14} /></div></div>;
+  return <div className="app-content registration-preview"><div className="app-title"><ArrowLeft size={17} />Nouvel adhérent</div><div className="registration-progress">{[0, 1, 2, 3, 4].map(n => <span key={n} className={n < 4 ? "complete" : ""} />)}</div><small>Étape 4 sur 5</small><h3>Formules et encaissement</h3><div className="formula-preview"><div><span className="formula-radio" /><strong>Abonnement mensuel</strong><b>— FCFA</b></div><small>Frais d’inscription</small><p>L’inscription donne accès jusqu’à la fin du mois.</p></div><div className="formula-preview active"><div><span className="formula-radio" /><strong>Carte de séances</strong><b>— FCFA</b></div><small>Tarif par séance · sans frais d’inscription</small><div className="session-counter"><span>Séances à créditer</span><i>−</i><b>—</b><i>+</i></div></div><h4>Mode d’encaissement</h4><div className="payment-options"><span className="active">Espèces</span><span>Wave</span><span>Orange Money</span></div><div className="app-outline primary-outline mt-auto">Voir le récapitulatif <ArrowUpRight size={14} /></div></div>;
 }
 
 function MemberCard() {
@@ -52,11 +53,11 @@ function MemberCard() {
 }
 
 function Payment() {
-  return <div className="app-content"><div className="app-title"><ArrowLeft size={17} />Mensualité</div><div className="mini-panel flex items-center gap-2"><Portrait variant={3} /><div><strong>Sélectionner un adhérent</strong><small>Nom, téléphone ou carte</small></div></div><h4>Mois couvert</h4><div className="app-outline">Choisir le mois</div><div className="mini-panel"><small>Montant de la mensualité</small><b className="revenue">— <span>FCFA</span></b></div><h4>Mode de règlement déclaré</h4><div className="payment-options"><span>Espèces</span><span>Wave</span><span>Orange M.</span></div><small>L’argent est reçu en dehors de l’application.</small><div className="app-button mt-auto"><Check size={14} />Enregistrer le règlement</div></div>;
+  return <div className="app-content payment-preview"><div className="app-title"><X size={17} />Nouveau paiement</div><div className="preview-segments"><span className="active">Mensualité</span><span>Séances</span></div><div className="mini-panel selected-member"><Portrait variant={3} /><div><strong>Votre adhérent</strong><small>N° de carte · téléphone</small></div><X size={12} /></div><h4>Mois couvert</h4><div className="app-outline">Choisir le mois et l’année</div><div className="mini-panel"><small>Montant · tarif de la salle</small><b className="revenue">— <span>FCFA</span></b></div><h4>Moyen d’encaissement</h4><div className="payment-options"><span className="active">Espèces</span><span>Wave</span><span>Orange Money</span></div><div className="app-search">Référence de transaction · facultatif</div><div className="app-outline primary-outline mt-auto"><Check size={14} />Enregistrer le règlement</div></div>;
 }
 
 function Members() {
-  return <><div className="app-content"><div className="app-title">Adhérents<span className="ml-auto text-lime"><Plus size={20} /></span></div><div className="app-search"><Search size={14} />Nom, carte ou téléphone</div><div className="flex gap-2 text-[9px]"><span className="filter active">Tous</span><span className="filter">Actifs</span><span className="filter">Expirent demain</span></div><h4>Les informations de chaque adhérent</h4>{["Identité et photo", "Carte personnelle", "Formule et échéance", "Solde de séances"].map((label, index) => <div className="operation" key={label}><Portrait variant={index} /><div className="flex-1"><strong>{label}</strong><small>Renseigné dans la fiche adhérent</small></div></div>)}<div className="app-outline mt-auto"><Plus size={14} />Nouvel adhérent</div></div><AppNav active="Adhérents" /></>;
+  return <><div className="app-content members-preview"><div className="members-preview-header"><div><h3>Adhérents</h3><small><span>— actifs</span> · <span>— expirés</span></small></div><span className="app-outline primary-outline"><Plus size={15} /></span></div><div className="app-search"><Search size={13} /><span>Nom, n° de carte ou téléphone</span><ScanLine size={14} className="text-lime" /></div><div className="member-filters"><span className="filter active">Tous</span><span className="filter">Actifs</span><span className="filter">Expirent demain</span></div><h4>Les informations de chaque adhérent</h4>{["Identité et photo", "Carte personnelle", "Formule et échéance", "Solde de séances"].map((label, index) => <div className="operation" key={label}><Portrait variant={index} /><div className="flex-1"><strong>{label}</strong><small>Renseigné dans la fiche adhérent</small></div></div>)}</div><AppNav active="Adhérents" /></>;
 }
 
 function Scanner() {
@@ -76,12 +77,12 @@ function Finances() {
 }
 
 function Entries() {
-  return <div className="app-content"><div className="app-title"><ArrowLeft size={17} />Entrées à la séance</div><div className="payment-options"><span className="active">Ce mois</span><span>Semaine</span><span>Tout</span></div><div className="mini-panel flex items-center justify-between gap-2"><div><small>Ventes de bracelets</small><b className="stat-value">—</b></div><div className="text-right"><small>Argent reçu</small><strong>— FCFA</strong></div></div><div className="app-search"><Search size={14} />Rechercher un bracelet</div><h4>Historique des ventes de bracelets</h4><div className="preview-empty"><Ticket size={30} /><p>Numéro du bracelet, date,<br />montant et réceptionniste.</p></div><div className="mini-panel"><small>Le scan enregistre une vente à la séance. Cet historique ne constitue pas un comptage de tous les passages dans la salle.</small></div></div>;
+  return <div className="app-content entries-preview"><div className="app-title"><ArrowLeft size={17} />Ventes de bracelets</div><div className="app-outline primary-outline"><Plus size={14} />Enregistrer une vente</div><div className="preview-segments period-segments"><span>Aujourd’hui</span><span>Semaine</span><span className="active">Mois</span><span>Tous</span></div><div className="preview-date-range"><span>Date de début</span><span>Date de fin</span></div><div className="mini-panel flex items-center justify-between gap-2"><div><small>Bracelets vendus</small><b className="stat-value">—</b></div><div className="text-right"><small>Encaissé</small><strong>— FCFA</strong></div></div><h4>Historique des ventes</h4><div className="preview-empty"><Ticket size={30} /><p>Numéro du bracelet, date,<br />montant et agent.</p></div><div className="mini-panel"><small>Les bracelets sont jetables. Le scan prépare leur vente, confirmée après validation du lot.</small></div></div>;
 }
 
 const screens = { dashboard: Dashboard, scan: ScanResult, registration: Registration, card: MemberCard, payment: Payment, members: Members, scanner: Scanner, finances: Finances, entries: Entries };
 
 export function Phone({ screen, className = "", label }: { screen: Screen; className?: string; label?: string }) {
   const Content = screens[screen];
-  return <div className={`phone ${className}`} role="img" aria-label={label || `Interface GymPass SN : ${screen}`}><div className={`phone-screen${screen === "scanner" ? " phone-screen-camera" : ""}`} aria-hidden="true"><div className="phone-status"><span>9:41</span><div className="phone-island" /><span className="flex gap-1 items-center"><span className="signal">▂▄▆</span><span>▰</span></span></div><Content /><div className="home-indicator" /></div></div>;
+  return <div className={`phone ${className}`} data-screen={screen} role="img" aria-label={label || `Interface GymPass SN : ${screen}`}><div className={`phone-screen${screen === "scanner" ? " phone-screen-camera" : ""}`} aria-hidden="true"><div className="phone-status"><span>9:41</span><div className="phone-island" /><span className="flex gap-1 items-center"><span className="signal">▂▄▆</span><span>▰</span></span></div><Content /><div className="home-indicator" /></div></div>;
 }
