@@ -518,7 +518,7 @@ h2 { font-size: clamp(31px, 3.3vw, 44px); line-height: 1.15; letter-spacing: -.0
 .members-preview .operation { gap: 8px; min-height: 48px; }
 .carousel-slide .phone:hover { translate: none; rotate: none; }
 @media (max-width: 540px) {
-  .hero h1 { font-size: clamp(29px, 7.7vw, 40px); line-height: 1.15; }
+  .hero h1 { font-size: clamp(24px, 7.1vw, 38px); line-height: 1.15; }
   .hero-title-line { white-space: normal; }
   .hero-visual { height: 550px; }
   .hero-glow { inset-inline: 0; }
@@ -577,7 +577,10 @@ h2 { font-size: clamp(31px, 3.3vw, 44px); line-height: 1.15; letter-spacing: -.0
 }
 @media (max-width: 540px) {
   :root { --section-space: 40px; --section-heading-space: 24px; }
-  .hero { padding-block: 32px 24px; row-gap: 32px; }
+  .hero { --page-gutter: 28px; padding-block: 32px 24px; row-gap: 32px; }
+  .hero-actions { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 10px; }
+  .hero-actions .button { justify-content: center; padding-inline: 10px; gap: 6px; }
+  .hero-actions svg { flex-shrink: 0; }
   .hero-badge { margin-bottom: 20px; }
   .hero-description { margin-block: 20px 24px; }
   .hero-checks { margin-top: 20px; column-gap: 12px; row-gap: 10px; }
@@ -594,7 +597,8 @@ h2 { font-size: clamp(31px, 3.3vw, 44px); line-height: 1.15; letter-spacing: -.0
 }
 @media (max-width: 360px) {
   :root { --page-gutter: 16px; }
-  .hero { padding-top: 24px; row-gap: 24px; }
+  .hero { --page-gutter: 24px; padding-top: 24px; row-gap: 24px; }
+  .hero-actions { grid-template-columns: minmax(0, 1fr); }
   .hero-visual { height: 520px; }
   .hero-phone-back { transform: rotate(-8deg) scale(.64); }
   .hero-phone-front { transform: rotate(5deg) scale(.70); }
