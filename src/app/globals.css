@@ -408,7 +408,8 @@ h2 { font-size: clamp(31px, 3.3vw, 44px); line-height: 1.15; letter-spacing: -.0
 .scan-profile-link { display: flex; align-items: center; justify-content: center; min-height: 27px; color: var(--text-muted); font-size: 9px; line-height: 1.4; }
 
 /* Les mouvements se composent avec les rotations et echelles responsive des telephones. */
-.hero { position: relative; isolation: isolate; }
+/* Le fond du hero couvre le viewport ; seuls les contenus sont en retrait. */
+.hero { position: relative; isolation: isolate; width: 100%; margin: 0; padding-inline: max(var(--page-gutter), calc((100% - 1200px) / 2)); }
 .hero::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(ellipse at 18% 38%, #b5ff2d09, transparent 62%); }
 /* Scanner : disposition camera de scanner_screen.dart, sans defilement interne. */
 .phone-screen-camera { background: #050708; }
@@ -431,6 +432,8 @@ h2 { font-size: clamp(31px, 3.3vw, 44px); line-height: 1.15; letter-spacing: -.0
 .scanner-halo { pointer-events: none; }
 .scanner-visual > .phone { z-index: 1; }
 .scanner-tag { position: relative; bottom: auto; max-width: 100%; z-index: 1; text-align: center; }
+/* La section ecrans s?etend bord a bord, sans retrait lateral. */
+.screens-section { width: 100%; max-width: none; margin-inline: 0; padding-inline: 0; }
 /* Galerie automatique : aucune piste de defilement horizontal. */
 .screen-carousel { --slide-step: clamp(215px, 30vw, 310px); position: relative; min-width: 0; }
 .carousel-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 15px; min-height: 44px; color: var(--text-muted); font-size: 11px; font-variant-numeric: tabular-nums; }
