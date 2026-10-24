@@ -66,7 +66,7 @@ export function ScreenCarousel({ slides }: { slides: Slide[] }) {
       if (event.key === "ArrowRight") { event.preventDefault(); select(current + 1); }
     }}
   >
-    <div className="carousel-toolbar"><span>{String(current + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}</span>{motionAllowed && <button type="button" onClick={() => { setPlaying(value => !value); setFocusPaused(false); }} aria-label={playing ? "Mettre le carrousel en pause" : "Reprendre le défilement automatique"}>{playing ? <Pause size={14} /> : <Play size={14} />}{playing ? "Pause" : "Lecture"}</button>}</div>
+    <div className="container"><div className="carousel-toolbar"><span>{String(current + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}</span>{motionAllowed && <button type="button" onClick={() => { setPlaying(value => !value); setFocusPaused(false); }} aria-label={playing ? "Mettre le carrousel en pause" : "Reprendre le défilement automatique"}>{playing ? <Pause size={14} /> : <Play size={14} />}{playing ? "Pause" : "Lecture"}</button>}</div></div>
     <div id="screen-carousel-stage" className="carousel-stage" aria-live={advancing ? "off" : "polite"} aria-atomic="false"
       onPointerDown={event => {
         if (!event.isPrimary || event.pointerType === "mouse") return;
