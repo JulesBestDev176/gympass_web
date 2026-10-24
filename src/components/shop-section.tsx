@@ -1,5 +1,5 @@
 import { ArrowUpRight, Check, Package, ShoppingBag, WifiOff } from "lucide-react";
-import { Phone } from "@/components/app-previews";
+import { ShopTour } from "@/components/shop-tour";
 
 export function ShopSection() {
   return <section id="boutique" className="section container product-split shop-section" aria-labelledby="shop-title">
@@ -19,6 +19,6 @@ export function ShopSection() {
       <div className="shop-offline"><WifiOff size={20} /><div><b>Le réseau coupe ? La vente reste.</b><p>Hors ligne, elle est conservée sur le téléphone et reste visible en attente de synchronisation. La confirmation du serveur est distinguée de l’enregistrement local.</p></div></div>
       <a href="#contact" className="product-link">Découvrir la boutique en démo <ArrowUpRight size={17} /></a>
     </div>
-    <div className="product-phone-stage shop-phone-stage"><div className="shop-phone-halo" /><Phone screen="shop" label="Aperçu de la boutique physique GymPass : photos des produits, quantités en stock, panier et enregistrement d’une vente au comptoir" /><span className="shop-stage-label"><ShoppingBag size={16} />Votre comptoir, dans GymPass.</span></div>
+    <ShopTour />
   </section>;
 }

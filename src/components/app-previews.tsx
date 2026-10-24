@@ -1,7 +1,7 @@
 import { ArrowLeft, ArrowUpRight, Bell, Check, CircleCheck, FlashlightOff, Home, Keyboard, Pencil, Plus, ScanLine, Search, Share2, Ticket, Users, Vibrate, Volume2, Wallet, X } from "lucide-react";
 import Image from "next/image";
 
-export type Screen = "dashboard" | "scan" | "registration" | "card" | "payment" | "members" | "scanner" | "finances" | "entries" | "shop";
+export type Screen = "dashboard" | "scan" | "registration" | "card" | "payment" | "members" | "scanner" | "finances" | "entries" | "shop" | "shopCart" | "shopStock" | "shopOffline";
 
 export function Portrait({ variant = 0, large = false }: { variant?: number; large?: boolean }) {
   return <span className={`avatar portrait portrait-${variant % 4}${large ? " avatar-large" : ""}`} aria-hidden="true"><Image src="/images/portraits-africains.png" alt="" width={large ? 160 : 64} height={large ? 160 : 64} /></span>;
@@ -96,7 +96,19 @@ function Shop() {
   </div>;
 }
 
-const screens = { dashboard: Dashboard, scan: ScanResult, registration: Registration, card: MemberCard, payment: Payment, members: Members, scanner: Scanner, finances: Finances, entries: Entries, shop: Shop };
+function ShopCart() {
+  return <div className="app-content shop-preview"><div className="app-title"><ArrowLeft size={17} />Panier<span className="demo-chip ml-auto">Démo</span></div><h3>Vérifier la vente</h3><div className="shop-preview-product"><span className="shop-preview-photo"><Image src="/images/boutique/eau-500ml.png" width={80} height={80} alt="" /></span><div><strong>Eau 500 ml</strong><small>2 × 500 FCFA</small><b>1 000 FCFA</b></div></div><Field label="Articles" value="2" /><Field label="Total" value="1 000 FCFA" /><h4>Règlement reçu</h4><div className="payment-options"><span className="active">Espèces</span><span>Wave</span><span>Orange Money</span></div><div className="shop-preview-cart"><small>Vente physique au comptoir</small><p>Vérifiez le panier et le règlement reçu avant de valider.</p><span className="app-outline primary-outline">Enregistrer la vente <Check size={13} /></span></div></div>;
+}
+
+function ShopStock() {
+  return <div className="app-content shop-preview"><div className="app-title"><ArrowLeft size={17} />Produits et stock<span className="demo-chip ml-auto">Démo</span></div><h3>Le propriétaire gère</h3><div className="shop-preview-product"><span className="shop-preview-photo"><Image src="/images/boutique/eau-500ml.png" width={80} height={80} alt="" /></span><div><strong>Eau 500 ml</strong><small>Prix de vente</small><b>500 FCFA</b></div></div><Field label="Stock avant la vente" value="20" /><Field label="Vendus au comptoir" value="−2" /><Field label="Stock après la vente" value="18" /><h4>Mouvements du produit</h4><div className="shop-preview-stock"><Check size={15} /><span>Vente de 2 eaux enregistrée</span></div><div className="shop-preview-cart"><small>Produits, prix et quantités</small><span className="app-outline primary-outline"><Plus size={13} />Réapprovisionner</span></div></div>;
+}
+
+function ShopOffline() {
+  return <div className="app-content shop-preview"><div className="app-title"><ArrowLeft size={17} />Synchronisation<span className="demo-chip ml-auto">Démo</span></div><h3>Vente conservée</h3><div className="shop-preview-stock"><Check size={15} /><span>Enregistrée sur ce téléphone</span></div><Field label="Vente boutique" value="1 000 FCFA" /><Field label="État" value="En attente" /><p className="body-copy">Le retour du réseau permet de transmettre la demande au serveur.</p><div className="shop-preview-cart"><small>Confirmation du serveur à vérifier</small><p>Une opération locale n’est pas encore une vente confirmée. Un conflit éventuel reste à traiter.</p><span className="app-outline primary-outline">Synchroniser les demandes</span></div></div>;
+}
+
+const screens = { dashboard: Dashboard, scan: ScanResult, registration: Registration, card: MemberCard, payment: Payment, members: Members, scanner: Scanner, finances: Finances, entries: Entries, shop: Shop, shopCart: ShopCart, shopStock: ShopStock, shopOffline: ShopOffline };
 
 export function Phone({ screen, className = "", label }: { screen: Screen; className?: string; label?: string }) {
   const Content = screens[screen];
