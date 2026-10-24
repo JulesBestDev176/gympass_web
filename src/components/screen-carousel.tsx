@@ -56,7 +56,7 @@ export function ScreenCarousel({ slides }: { slides: Slide[] }) {
     className="screen-carousel"
     role="region"
     aria-roledescription="carrousel"
-    aria-label="Les écrans de GymPass SN"
+    aria-label="Les écrans de GymPass"
     onMouseEnter={() => setHovered(true)}
     onMouseLeave={() => setHovered(false)}
     onFocusCapture={() => setFocusPaused(true)}

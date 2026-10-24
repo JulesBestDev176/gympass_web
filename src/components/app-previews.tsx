@@ -1,7 +1,7 @@
 import { ArrowLeft, ArrowUpRight, Bell, Check, CircleCheck, FlashlightOff, Home, Keyboard, Pencil, Plus, ScanLine, Search, Share2, Ticket, Users, Vibrate, Volume2, Wallet, X } from "lucide-react";
 import Image from "next/image";
 
-export type Screen = "dashboard" | "scan" | "registration" | "card" | "payment" | "members" | "scanner" | "finances" | "entries";
+export type Screen = "dashboard" | "scan" | "registration" | "card" | "payment" | "members" | "scanner" | "finances" | "entries" | "shop";
 
 export function Portrait({ variant = 0, large = false }: { variant?: number; large?: boolean }) {
   return <span className={`avatar portrait portrait-${variant % 4}${large ? " avatar-large" : ""}`} aria-hidden="true"><Image src="/images/portraits-africains.png" alt="" width={large ? 160 : 64} height={large ? 160 : 64} /></span>;
@@ -24,9 +24,9 @@ function Dashboard() {
         <div className="dashboard-stat"><div><span className="dashboard-stat-icon"><Users size={13} /></span><b>—</b></div><strong>Adhérents actifs</strong><small>Actuellement</small></div>
         <div className="dashboard-stat"><div><span className="dashboard-stat-icon blue"><Ticket size={13} /></span><b>—</b></div><strong>Bracelets vendus</strong><small>Ce mois</small></div>
       </div>
-      <div className="dashboard-revenue"><span className="dashboard-stat-icon green"><Wallet size={13} /></span><div><b>— <span>FCFA</span></b><small>Encaissé au total</small><small>Période sélectionnée · bracelets inclus</small></div></div>
+      <div className="dashboard-revenue"><span className="dashboard-stat-icon green"><Wallet size={13} /></span><div><b>— <span>FCFA</span></b><small>Encaissé au total</small><small>Bracelets et boutique inclus</small></div></div>
       <div className="quick-actions dashboard-actions">{[{ Icon: Plus, label: "Adhérent" }, { Icon: Plus, label: "Paiement" }, { Icon: Users, label: "Personnel" }].map(({ Icon, label }) => <span key={label}><Icon size={12} />{label}</span>)}</div>
-      <div className="dashboard-operations"><h4>Dernières opérations</h4><span>Tout voir</span></div>
+      <div className="app-outline primary-outline">Boutique de la salle</div><div className="dashboard-operations"><h4>Dernières opérations</h4><span>Tout voir</span></div>
       <p className="dashboard-empty">Les règlements enregistrés apparaissent ici après vos premières opérations.</p>
     </div>
     <AppNav />
@@ -73,16 +73,32 @@ function Scanner() {
 }
 
 function Finances() {
-  return <div className="app-content"><div className="app-title"><ArrowLeft size={17} />Finances</div><div className="payment-options"><span className="active">Ce mois</span><span>Semaine</span><span>Tout</span></div><div className="mini-panel"><div className="flex items-center gap-2"><Wallet size={18} className="text-lime" /><b className="revenue">— <span>FCFA</span></b></div><small>Total des règlements enregistrés</small><div className="grid grid-cols-2 gap-2 mt-3 border-t border-white/5 pt-2"><div><small>Adhérents</small><strong>—</strong></div><div><small>Bracelets</small><strong>—</strong></div></div></div><div className="mini-panel"><h4>Évolution des encaissements</h4><div className="chart-empty"><span /><span /><span /><small>Selon la période choisie</small></div></div><div className="flex gap-1 text-[8px]"><span className="filter active">Toutes sources</span><span className="filter">Tous modes</span></div><div className="app-search"><Search size={13} />Adhérent, carte, bracelet ou personnel</div><h4>Transactions</h4><div className="preview-empty compact"><Wallet size={21} /><p>Votre historique de règlements.</p></div></div>;
+  return <div className="app-content"><div className="app-title"><ArrowLeft size={17} />Finances</div><div className="payment-options"><span className="active">Ce mois</span><span>Semaine</span><span>Tout</span></div><div className="mini-panel"><div className="flex items-center gap-2"><Wallet size={18} className="text-lime" /><b className="revenue">— <span>FCFA</span></b></div><small>Total des encaissements de la salle</small><div className="grid grid-cols-3 gap-2 mt-3 border-t border-white/5 pt-2"><div><small>Adhérents</small><strong>—</strong></div><div><small>Bracelets</small><strong>—</strong></div><div><small>Boutique</small><strong>—</strong></div></div></div><div className="mini-panel"><h4>Évolution des encaissements</h4><div className="chart-empty"><span /><span /><span /><small>Selon la période choisie</small></div></div><div className="flex gap-1 text-[8px]"><span className="filter active">Toutes sources</span><span className="filter">Tous modes</span></div><div className="app-search"><Search size={13} />Adhérent, carte, bracelet ou personnel</div><h4>Transactions</h4><div className="preview-empty compact"><Wallet size={21} /><p>Votre historique de règlements.</p></div></div>;
 }
 
 function Entries() {
   return <div className="app-content entries-preview"><div className="app-title"><ArrowLeft size={17} />Ventes de bracelets</div><div className="app-outline primary-outline"><Plus size={14} />Enregistrer une vente</div><div className="preview-segments period-segments"><span>Aujourd’hui</span><span>Semaine</span><span className="active">Mois</span><span>Tous</span></div><div className="preview-date-range"><span>Date de début</span><span>Date de fin</span></div><div className="mini-panel flex items-center justify-between gap-2"><div><small>Bracelets vendus</small><b className="stat-value">—</b></div><div className="text-right"><small>Encaissé</small><strong>— FCFA</strong></div></div><h4>Historique des ventes</h4><div className="preview-empty"><Ticket size={30} /><p>Numéro du bracelet, date,<br />montant et agent.</p></div><div className="mini-panel"><small>Les bracelets sont jetables. Le scan prépare leur vente, confirmée après validation du lot.</small></div></div>;
 }
 
-const screens = { dashboard: Dashboard, scan: ScanResult, registration: Registration, card: MemberCard, payment: Payment, members: Members, scanner: Scanner, finances: Finances, entries: Entries };
+function Shop() {
+  return <div className="app-content shop-preview">
+    <div className="app-title"><ArrowLeft size={17} />Boutique<span className="shop-preview-demo">Démo</span></div>
+    <div className="app-search"><Search size={13} />Rechercher un produit</div>
+    <div className="preview-segments"><span className="active">Tous</span><span>Boissons</span><span>Nutrition</span></div>
+    <h4>Produits de la salle</h4>
+    {[{ image: "eau-500ml", name: "Eau 500 ml", price: "500", stock: "20" }, { image: "barre-proteinee", name: "Barre protéinée", price: "1 500", stock: "12" }].map(product => <div className="shop-preview-product" key={product.name}>
+      <span className="shop-preview-photo"><Image src={`/images/boutique/${product.image}.png`} width={80} height={80} alt="" /></span>
+      <div><strong>{product.name}</strong><small>{product.stock} en stock</small><b>{product.price} FCFA</b></div>
+      <span className="shop-preview-add"><Plus size={15} /></span>
+    </div>)}
+    <div className="shop-preview-stock"><Check size={15} /><span>Stock mis à jour après chaque vente</span></div>
+    <div className="shop-preview-cart"><small>Panier · 2 articles</small><div><strong>2 × Eau 500 ml</strong><b>1 000 FCFA</b></div><span className="app-outline primary-outline">Enregistrer la vente <ArrowUpRight size={13} /></span></div>
+  </div>;
+}
+
+const screens = { dashboard: Dashboard, scan: ScanResult, registration: Registration, card: MemberCard, payment: Payment, members: Members, scanner: Scanner, finances: Finances, entries: Entries, shop: Shop };
 
 export function Phone({ screen, className = "", label }: { screen: Screen; className?: string; label?: string }) {
   const Content = screens[screen];
-  return <div className={`phone ${className}`} data-screen={screen} role="img" aria-label={label || `Interface GymPass SN : ${screen}`}><div className={`phone-screen${screen === "scanner" ? " phone-screen-camera" : ""}`} aria-hidden="true"><div className="phone-status"><span>9:41</span><div className="phone-island" /><span className="flex gap-1 items-center"><span className="signal">▂▄▆</span><span>▰</span></span></div><Content /><div className="home-indicator" /></div></div>;
+  return <div className={`phone ${className}`} data-screen={screen} role="img" aria-label={label || `Interface GymPass : ${screen}`}><div className={`phone-screen${screen === "scanner" ? " phone-screen-camera" : ""}`} aria-hidden="true"><div className="phone-status"><span>9:41</span><div className="phone-island" /><span className="flex gap-1 items-center"><span className="signal">▂▄▆</span><span>▰</span></span></div><Content /><div className="home-indicator" /></div></div>;
 }
