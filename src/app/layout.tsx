@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { ScrollToTop } from "@/components/scroll-to-top";
 
 const urbanist = localFont({ src: "../../public/fonts/Urbanist.ttf", variable: "--font-urbanist", weight: "100 900", display: "swap" });
 
@@ -12,5 +13,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="fr" className={urbanist.variable}><body>{children}</body></html>;
+  return <html lang="fr" className={urbanist.variable}><body>{children}<ScrollToTop /></body></html>;
 }
