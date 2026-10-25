@@ -28,7 +28,19 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   output: "standalone",
   async headers() {
-    return [{ source: "/:path*", headers: securityHeaders }];
+    return [
+      { source: "/:path*", headers: securityHeaders },
+      {
+        source: "/demo",
+        headers: [
+          ...securityHeaders.filter((header) => header.key === "Content-Security-Policy").map((header) => ({
+            ...header,
+            value: `${header.value}; frame-src https://drive.google.com`,
+          })),
+          { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" },
+        ],
+      },
+    ];
   },
 };
 
