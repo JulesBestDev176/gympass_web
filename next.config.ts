@@ -35,7 +35,7 @@ const nextConfig: NextConfig = {
         headers: [
           ...securityHeaders.filter((header) => header.key === "Content-Security-Policy").map((header) => ({
             ...header,
-            value: `${header.value}; frame-src https://drive.google.com`,
+            value: `${header.value}; media-src 'self' https://minio-sxbdug7ttppdp9shvft8idjz.185.182.9.36.sslip.io`,
           })),
           { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" },
         ],
