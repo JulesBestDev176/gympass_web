@@ -27,7 +27,7 @@ export function HeroPhones() {
     <>
       <motion.div
         className="hero-phone-back"
-        animate={{ scale: p1.scale, y: p1.y, zIndex: p1.zIndex }}
+        animate={{ scale: p1.scale, y: p1.y, zIndex: p1.zIndex, rotate: -8 }}
         transition={SPRING}
         style={{ position: "absolute", left: 0, top: 52, originX: 0.5, originY: 0.5 }}
       >
@@ -39,7 +39,7 @@ export function HeroPhones() {
 
       <motion.div
         className="hero-phone-front"
-        animate={{ scale: p2.scale, y: p2.y, zIndex: p2.zIndex }}
+        animate={{ scale: p2.scale, y: p2.y, zIndex: p2.zIndex, rotate: 5 }}
         transition={SPRING}
         style={{ position: "absolute", right: -5, top: 5, originX: 0.5, originY: 0.5 }}
       >
